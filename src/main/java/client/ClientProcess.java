@@ -9,13 +9,23 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.restassured.specification.RequestSpecification;
+
 import java.util.HashMap;
-import static config.Globals.ACTIONS_CLIENT;
 import static config.Globals.AUTHORIZATION_CLIENT;
 import static io.qameta.allure.model.Parameter.Mode.HIDDEN;
 
 
 public class ClientProcess {
+    private static final String ACTIONS_CLIENT = "/api/auth/user";
+    private final RequestSpecification requestSpec;
+
+    public ClientProcess() {
+        RestAssured.baseURI = Globals.BASE_URI; // Задаём базовый URI для всех запросов
+        requestSpec = RestAssured.given()
+                .baseUri(Globals.BASE_URI) // Альтернативный способ для baseURI
+                .contentType("application/json"); // Устанавливаем Content-Type
+    }
 
     @Step("Send POST request to api/auth/register to create new client")
     @DisplayName("Register a client")
@@ -93,11 +103,9 @@ public class ClientProcess {
     @Step("Send DELETE request to api/auth/user to delete client")
     @DisplayName("Delete a client")
     public Response deleteClient(String token) {
-        RestAssured.baseURI = Globals.BASE_URI;
-        return RestAssured.given()
-                .auth().oauth2(token)
+        return requestSpec
+                .auth().oauth2(token) // Добавляем авторизацию для конкретного запроса
                 .when()
                 .delete(ACTIONS_CLIENT);
     }
-
 }
