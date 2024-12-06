@@ -17,10 +17,6 @@ public class ClientAuthTest {
     private final ClientProcess clientProcess = new ClientProcess();
     private final ClientVerifier clientVerifier = new ClientVerifier();
 
-    private void inform(String message) {
-        System.out.println(message);
-    }
-
     public ClientAuthTest() {
         client = User.getRandomUser();
     }
@@ -50,14 +46,9 @@ public class ClientAuthTest {
     @After
     public void tearDown() {
         if (token != null) {
-            try {
-                Response resp = clientProcess.deleteClient(token);
-                clientVerifier.checkClientDeleted(resp);
-            } catch (Exception e) {
-                inform(String.format("Ошибка при попытке удаления клиента: %s", e.getMessage()));
-            } finally {
-                token = null;
-            }
+            Response resp = clientProcess.deleteClient(token);
+            clientVerifier.checkClientDeleted(resp);
+            token = null;
         }
     }
 }
