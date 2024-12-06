@@ -8,34 +8,29 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class ClientRegTest {
 
     private final ClientProcess clientProcess = new ClientProcess();
     private final ClientVerifier clientVerifier = new ClientVerifier();
-    private final List<String> tokensToClean = new ArrayList<>();
+    private String tokenToClean;
 
     @Before
     public void setUp() {
-        // Логирование или настройка окружения, если требуется
+        tokenToClean = null; // Обнуляем перед каждым тестом
     }
 
     @Test
     public void registrationNewClient() throws JsonProcessingException {
         var client = User.getRandomUser();
         var resp = clientProcess.registrationNewClient(client);
-        String token = clientVerifier.checkRegistrationSuccess(resp);
-        tokensToClean.add(token);
+        tokenToClean = clientVerifier.checkRegistrationSuccess(resp);
     }
 
     @Test
     public void registrationExistingClient() throws JsonProcessingException {
         var client = User.getRandomUser();
         var resp = clientProcess.registrationNewClient(client);
-        String token = clientVerifier.checkRegistrationSuccess(resp);
-        tokensToClean.add(token);
+        tokenToClean = clientVerifier.checkRegistrationSuccess(resp);
 
         resp = clientProcess.registrationNewClient(client);
         clientVerifier.checkBanRegisteringExistingClient(resp);
@@ -50,14 +45,10 @@ public class ClientRegTest {
 
     @After
     public void tearDown() {
-        // Удаляем созданных пользователей
-        for (String token : tokensToClean) {
-            try {
-                clientProcess.deleteClient(token);
-            } catch (Exception e) {
-                System.err.printf("Failed to delete client with token %s: %s%n", token, e.getMessage());
-            }
+        // Удаляем созданного пользователя, если токен существует
+        if (tokenToClean != null) {
+                clientProcess.deleteClient(tokenToClean);
+                tokenToClean = null; // Очищаем токен после удаления
         }
-        tokensToClean.clear();
     }
 }
