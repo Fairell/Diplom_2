@@ -12,12 +12,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.specification.RequestSpecification;
 
 import java.util.HashMap;
+import static config.Globals.ACTIONS_CLIENT;
 import static config.Globals.AUTHORIZATION_CLIENT;
 import static io.qameta.allure.model.Parameter.Mode.HIDDEN;
 
 
 public class ClientProcess {
-    private static final String ACTIONS_CLIENT = "/api/auth/user";
     private final RequestSpecification requestSpec;
 
     public ClientProcess() {
