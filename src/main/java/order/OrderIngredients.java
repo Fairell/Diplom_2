@@ -1,6 +1,6 @@
-package Order;
+package order;
 
-import Config.Globals;
+import config.Globals;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;

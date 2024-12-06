@@ -1,6 +1,6 @@
-package Order;
+package order;
 
-import Config.Globals;
+import config.Globals;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.qameta.allure.Param;
@@ -10,7 +10,7 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
-import static Config.Globals.*;
+import static config.Globals.*;
 import static io.qameta.allure.model.Parameter.Mode.HIDDEN;
 
 public class OrderProcess {

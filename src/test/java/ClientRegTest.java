@@ -1,6 +1,6 @@
-import Client.ClientProcess;
-import Client.ClientVerifier;
-import Client.User;
+import client.ClientProcess;
+import client.ClientVerifier;
+import client.User;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import io.restassured.response.Response;

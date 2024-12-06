@@ -1,7 +1,7 @@
-import Client.ClientProcess;
-import Client.ClientVerifier;
-import Client.Credentials;
-import Client.User;
+import client.ClientProcess;
+import client.ClientVerifier;
+import client.Credentials;
+import client.User;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import io.qameta.allure.Step;

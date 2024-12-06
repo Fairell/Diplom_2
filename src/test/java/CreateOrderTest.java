@@ -1,10 +1,10 @@
-import Client.ClientProcess;
-import Client.ClientVerifier;
-import Order.OrderProcess;
-import Order.OrderVerifier;
-import Order.OrderIngredients;
-import Client.User;
-import Order.OrderBase;
+import client.ClientProcess;
+import client.ClientVerifier;
+import order.OrderProcess;
+import order.OrderVerifier;
+import order.OrderIngredients;
+import client.User;
+import order.OrderBase;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import io.qameta.allure.junit4.DisplayName;

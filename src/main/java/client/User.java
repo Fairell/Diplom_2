@@ -1,4 +1,4 @@
-package Client;
+package client;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import org.apache.commons.lang3.RandomStringUtils;

@@ -1,4 +1,4 @@
-package Config;
+package config;
 
 public class Globals {
     public static final String BASE_URI = "https://stellarburgers.nomoreparties.site";

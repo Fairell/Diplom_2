@@ -1,4 +1,4 @@
-package Client;
+package client;
 
 import io.restassured.response.Response;
 import static java.net.HttpURLConnection.*;

@@ -1,6 +1,6 @@
-package Client;
+package client;
 
-import Config.Globals;
+import config.Globals;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import io.qameta.allure.Param;
 import io.qameta.allure.Step;
@@ -10,8 +10,8 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.HashMap;
-import static Config.Globals.ACTIONS_CLIENT;
-import static Config.Globals.AUTHORIZATION_CLIENT;
+import static config.Globals.ACTIONS_CLIENT;
+import static config.Globals.AUTHORIZATION_CLIENT;
 import static io.qameta.allure.model.Parameter.Mode.HIDDEN;
 
 
